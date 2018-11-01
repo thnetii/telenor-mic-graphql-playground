@@ -1,0 +1,38 @@
+{
+  "name": "thnetii-telenor-mic-graphql-playground",
+  "version": "2.33.0",
+  "private": true,
+  "author": {
+    "name": "Fredrik Høisæther Rasch",
+    "email": "fredrik.rasch@gmail.com",
+    "url": "https://github.com/couven92"
+  },
+  "homepage": "https://github.com/thnetii/telenor-mic-graphql-playground/",
+  "bugs": {
+    "url": "https://github.com/thnetii/telenor-mic-graphql-playground/issues",
+    "email": "fredrik.rasch@gmail.com"
+  },
+  "repository": "github:thnetii/telenor-mic-graphql-playground",
+  "license": "MIT",
+  "keywords": [
+    "telenor", "connexion", "iot", "graphql-playground"
+  ],
+  "dependencies": {
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-scripts-ts": "3.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.2",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
+    "typescript": "^3.1.5"
+  }
+}
