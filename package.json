@@ -15,12 +15,22 @@
   "repository": "github:thnetii/telenor-mic-graphql-playground",
   "license": "MIT",
   "keywords": [
-    "telenor", "connexion", "iot", "graphql-playground"
+    "telenor",
+    "connexion",
+    "iot",
+    "graphql-playground"
   ],
   "dependencies": {
+    "bootstrap": "^3.3.7",
     "react": "^16.6.0",
+    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.0",
-    "react-scripts-ts": "3.1.0"
+    "react-redux": "^5.1.0",
+    "react-router": "^4.3.1",
+    "react-router-bootstrap": "^0.24.4",
+    "react-router-dom": "^4.3.1",
+    "react-scripts-ts": "3.1.0",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -29,10 +39,16 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/bootstrap": "^3.3.7",
     "@types/jest": "^23.3.9",
     "@types/node": "^10.12.2",
     "@types/react": "^16.4.18",
+    "@types/react-bootstrap": "^0.32.4",
     "@types/react-dom": "^16.0.9",
+    "@types/react-redux": "^5.0.21",
+    "@types/react-router": "^4.3.1",
+    "@types/react-router-bootstrap": "^0.24.4",
+    "@types/react-router-dom": "^4.3.1",
     "typescript": "^3.1.5"
   }
 }
