@@ -1,7 +1,13 @@
 import * as React from 'react';
+import { Dispatch, bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { Grid, ButtonGroup, Button } from 'react-bootstrap';
 import AppPageHeader from './AppPageHeader';
-import { CounterProps } from 'src/types/Counter';
+
+import { GlobalState } from '../types';
+
+import { CounterAnyAction, CounterActionCreators } from '../actions/Counter';
+import { CounterProps } from '../types/Counter';
 
 const Counter = ({ count, onIncrement, onReset, onDecrement }: CounterProps) =>
   <div>
@@ -18,4 +24,8 @@ const Counter = ({ count, onIncrement, onReset, onDecrement }: CounterProps) =>
     </Grid>
   </div>;
 
-export default Counter;
+export default connect(
+  (state: GlobalState) => state.counter,
+  (dispatch: Dispatch<CounterAnyAction>) => bindActionCreators(CounterActionCreators, dispatch)
+)(Counter);
+

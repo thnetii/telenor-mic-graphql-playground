@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Home from './components/Home';
-import Layout from './components/Layout';
-import Counter from './containers/Counter';
+import Home from '../components/Home';
+import Layout from './Layout';
+import Counter from '../components/Counter';
 
 const App = () =>
   <Router>

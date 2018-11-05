@@ -6,3 +6,9 @@ export type DECREMENT_COUNTER = typeof DECREMENT_COUNTER;
 
 export const RESET_COUNTER = 'RESET_COUNTER';
 export type RESET_COUNTER = typeof RESET_COUNTER;
+
+export type CounterAnyActionType = (
+  INCREMENT_COUNTER |
+  DECREMENT_COUNTER |
+  RESET_COUNTER
+);

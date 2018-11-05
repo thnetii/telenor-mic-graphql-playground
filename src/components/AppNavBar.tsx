@@ -7,20 +7,20 @@ const AppNavBar = () =>
   <Navbar inverse={true} fixedBottom={true} fluid={true} collapseOnSelect={true}>
     <Navbar.Header>
       <Navbar.Brand>
-        <Link to={'/'}><Glyphicon glyph={'home'}/> MIC GraphQL Playground</Link>
+        <Link to={'/'}><Glyphicon glyph={'home'} /> MIC GraphQL Playground</Link>
       </Navbar.Brand>
-      <Navbar.Toggle/>
+      <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav>
         <LinkContainer to={'/login'}>
           <NavItem>
-            <Glyphicon glyph={'user'}/> Login
+            <Glyphicon glyph={'user'} /> Login
           </NavItem>
         </LinkContainer>
         <LinkContainer to={'/counter'}>
           <NavItem>
-            <Glyphicon glyph={'education'}/> Counter
+            <Glyphicon glyph={'education'} /> Counter
           </NavItem>
         </LinkContainer>
       </Nav>

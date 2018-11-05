@@ -1,38 +1,22 @@
-import { Store, ReducersMapObject, Reducer, Middleware, StoreEnhancer, combineReducers, applyMiddleware, compose, createStore } from 'redux';
-import { History } from 'history';
-import { routerMiddleware, connectRouter } from 'connected-react-router';
-import { CounterState } from './Counter';
-import * as Counter from '../reducers/Counter';
-import { CounterAction } from 'src/actions/Counter';
+import { ConnectedRouterProps, RouterState, RouterAction } from 'connected-react-router';
 
-export interface GlobalState {
+import { CounterState } from './Counter';
+import { CounterAnyAction } from '../actions/Counter';
+
+export interface AppProps {
+  'route-name': string;
+};
+
+export interface GlobalAppState {
   counter: CounterState;
 }
 
-type GlobalAction = CounterAction;
+export interface GlobalState extends GlobalAppState {
+  router: ConnectedRouterProps & RouterState;
+}
 
-export function configureStore(history: History, initialState?: GlobalState): Store<GlobalState, GlobalAction> {
-  const reducerMap: ReducersMapObject<GlobalState, GlobalAction> = {
-    counter: Counter.counterReducer
-  };
+export type GlobalAppAction = (
+  CounterAnyAction
+);
 
-  const middleware: Middleware[] = [
-    routerMiddleware(history)
-  ];
-
-  const enhancers: StoreEnhancer[] = [];
-  const isDevelopment = process.env.NODE_ENV === 'development';
-  if (isDevelopment && typeof window !== 'undefined' && (window as any).devToolsExtension) {
-    enhancers.push((window as any).devToolsExtension() as StoreEnhancer);
-  }
-
-  const rootReducer: Reducer<GlobalState, GlobalAction> = connectRouter(history)(
-    combineReducers(reducerMap)
-  );
-
-  return createStore(
-    rootReducer,
-    initialState,
-    compose(applyMiddleware(...middleware), ...enhancers)
-  );
-};
+export type GlobalAction = GlobalAppAction | RouterAction;

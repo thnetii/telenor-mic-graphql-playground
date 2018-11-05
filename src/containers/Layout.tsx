@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Grid } from 'react-bootstrap';
-import AppNavBar from './AppNavrBar';
+import AppNavBar from '../components/AppNavBar';
 
 const Layout = (props: { children: any}) =>
   <Grid fluid={true}>

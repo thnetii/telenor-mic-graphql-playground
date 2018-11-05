@@ -1,38 +1,36 @@
-import { Action, ActionCreatorsMapObject } from 'redux';
+import { Action } from 'redux';
 import * as constants from '../constants/Counter';
+import { CounterAnyActionType } from '../constants/Counter';
 
-export interface IncrementCounterAction extends Action {
-  type: constants.INCREMENT_COUNTER;
+export interface CounterAction<T extends CounterAnyActionType> extends Action {
+  type: T;
 }
+export type IncrementCounterAction = CounterAction<constants.INCREMENT_COUNTER>;
+export type DecrementCounterAction = CounterAction<constants.DECREMENT_COUNTER>;
+export type ResetCounterAction = CounterAction<constants.RESET_COUNTER>;
 
-export interface DecrementCounterAction extends Action {
-  type: constants.DECREMENT_COUNTER;
-}
-
-export interface ResetCounterAction extends Action {
-  type: constants.RESET_COUNTER;
-}
-
-export type CounterAction = (
+export type CounterAnyAction = (
   IncrementCounterAction |
   DecrementCounterAction |
   ResetCounterAction
 );
 
-export function onIncrement(): IncrementCounterAction {
+function onIncrement(): IncrementCounterAction {
   return { type: constants.INCREMENT_COUNTER };
 }
 
-export function onDecrement(): DecrementCounterAction {
+function onDecrement(): DecrementCounterAction {
   return { type: constants.DECREMENT_COUNTER };
 }
 
-export function onReset(): ResetCounterAction {
+function onReset(): ResetCounterAction {
   return { type: constants.RESET_COUNTER };
 }
 
-export const counterActionCreators: ActionCreatorsMapObject<CounterAction> = {
+export const CounterActionCreators = {
   onIncrement,
   onDecrement,
   onReset
 };
+
+export type CounterActionCreatorMap = typeof CounterActionCreators;
