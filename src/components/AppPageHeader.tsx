@@ -2,7 +2,7 @@ import * as React from 'react';
 import { } from 'reactstrap';
 
 const AppPageHeader = () =>
-  <div className="text-center">
+  <div className="text-center mt-3">
     <h1 className="display-4">
       Telenor Connexion Managed IoT Cloud
       <br />

@@ -6,7 +6,7 @@ const Home = () =>
   <div>
     <AppPageHeader />
     <Container className={'text-center'}>
-      <Alert color={'warning'} fade={false}>
+      <Alert color={'danger'} fade={false}>
         <h4>BETA functionality!</h4>
         <p>GraphQL support is currently still in development and not supported for production by Telenor Connexion!</p>
       </Alert>
