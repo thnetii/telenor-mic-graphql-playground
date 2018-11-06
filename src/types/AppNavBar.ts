@@ -1,5 +1,5 @@
-import { AppNavBarActionCreators } from '../actions/AppNavBar';
 import { RouterState, ConnectedRouterProps } from 'connected-react-router';
+import { AppNavBarActionCreators } from '../actions/AppNavBar';
 
 export interface AppNavBarState {
   isOpen: boolean;
@@ -11,4 +11,4 @@ export const initialState: AppNavBarState = {
 
 export type AppNavBarRouterState = AppNavBarState & ConnectedRouterProps & RouterState;
 
-export type AppNavBarProps = AppNavBarState & typeof AppNavBarActionCreators & ConnectedRouterProps & RouterState;
+export type AppNavBarProps = AppNavBarRouterState & typeof AppNavBarActionCreators;

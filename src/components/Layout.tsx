@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
-import AppNavBar from '../components/AppNavBar';
+import AppNavBar from './AppNavBar';
 
 const Layout = (props: { children: any }) =>
   <div>
