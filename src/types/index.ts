@@ -2,6 +2,8 @@ import { ConnectedRouterProps, RouterState, RouterAction } from 'connected-react
 
 import { CounterState } from './Counter';
 import { CounterAnyAction } from '../actions/Counter';
+import { AppNavBarState } from './AppNavBar';
+import { AppNavBarAnyAction } from '../actions/AppNavBar';
 
 export interface AppProps {
   'route-name': string;
@@ -9,6 +11,7 @@ export interface AppProps {
 
 export interface GlobalAppState {
   counter: CounterState;
+  appNavBar: AppNavBarState;
 }
 
 export interface GlobalState extends GlobalAppState {
@@ -16,7 +19,8 @@ export interface GlobalState extends GlobalAppState {
 }
 
 export type GlobalAppAction = (
-  CounterAnyAction
+  CounterAnyAction |
+  AppNavBarAnyAction
 );
 
 export type GlobalAction = GlobalAppAction | RouterAction;

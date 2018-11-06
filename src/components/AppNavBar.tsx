@@ -1,30 +1,33 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { Glyphicon, Nav, Navbar, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Navbar, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap';
+import { NavLink as RRNavLink } from 'react-router-dom';
+import { Home as HomeIcon, Games as GamesIcon } from '@material-ui/icons';
 
-const AppNavBar = () =>
-  <Navbar inverse={true} fixedBottom={true} fluid={true} collapseOnSelect={true}>
-    <Navbar.Header>
-      <Navbar.Brand>
-        <Link to={'/'}><Glyphicon glyph={'home'} /> MIC GraphQL Playground</Link>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-    </Navbar.Header>
-    <Navbar.Collapse>
-      <Nav>
-        <LinkContainer to={'/login'}>
-          <NavItem>
-            <Glyphicon glyph={'user'} /> Login
-          </NavItem>
-        </LinkContainer>
-        <LinkContainer to={'/counter'}>
-          <NavItem>
-            <Glyphicon glyph={'education'} /> Counter
-          </NavItem>
-        </LinkContainer>
+import { GlobalState } from '../types';
+import { AppNavBarProps, AppNavBarRouterState } from '../types/AppNavBar';
+import { AppNavBarActionCreators } from '../actions/AppNavBar';
+
+const AppNavBar = (props: AppNavBarProps) =>
+  <Navbar color="dark" dark={true} expand="md" className="fixed-bottom">
+    <NavbarToggler onClick={props.onToggle} />
+    <Collapse isOpen={props.isOpen} navbar={true}>
+      <Nav className="mr-auto" navbar={true}>
+        <NavItem active={props.location.pathname === '/'}>
+          <NavLink tag={RRNavLink} to="/"><HomeIcon /> <span>Home</span></NavLink>
+        </NavItem>
+        <NavItem active={props.location.pathname.toLowerCase() === '/counter'}>
+          <NavLink tag={RRNavLink} to="/counter"><GamesIcon /> <span>Counter</span></NavLink>
+        </NavItem>
       </Nav>
-    </Navbar.Collapse>
+    </Collapse>
   </Navbar>;
 
-export default AppNavBar;
+export default connect(
+  (state: GlobalState): AppNavBarRouterState => ({
+    ...state.appNavBar,
+    ...state.router
+  }),
+  dispatch => bindActionCreators(AppNavBarActionCreators, dispatch)
+)(AppNavBar);

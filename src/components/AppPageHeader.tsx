@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { PageHeader } from 'react-bootstrap';
+import { } from 'reactstrap';
 
 const AppPageHeader = () =>
   <div className="text-center">
-    <PageHeader>
+    <h1 className="display-4">
       Telenor Connexion Managed IoT Cloud
-      <br/>
-      <small>Interactive GraphQL Playground</small>
-    </PageHeader>
+      <br />
+      <small className="text-muted">Interactive GraphQL Playground</small>
+    </h1>
+    <hr />
   </div>;
 
 export default AppPageHeader;

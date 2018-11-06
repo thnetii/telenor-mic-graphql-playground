@@ -7,10 +7,12 @@ import { routerMiddleware, connectRouter, } from 'connected-react-router';
 import { GlobalState, GlobalAction, GlobalAppState, GlobalAppAction } from './types';
 
 import { CounterReducer } from './reducers/Counter';
+import { AppNavBarReducer } from './reducers/AppNavBar';
 
 export default (history: History, initialState?: GlobalState): Store<GlobalState, GlobalAction> => {
   const reducerMap: ReducersMapObject<GlobalAppState, GlobalAppAction> = {
-    counter: CounterReducer
+    counter: CounterReducer,
+    appNavBar: AppNavBarReducer
   };
 
   const middleware: Middleware[] = [];

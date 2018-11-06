@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { Grid, ButtonGroup, Button } from 'react-bootstrap';
+import { Container, ButtonGroup, Button } from 'reactstrap';
 import AppPageHeader from './AppPageHeader';
 
 import { GlobalState } from '../types';
@@ -12,7 +12,7 @@ import { CounterProps } from '../types/Counter';
 const Counter = ({ count, onIncrement, onReset, onDecrement }: CounterProps) =>
   <div>
     <AppPageHeader />
-    <Grid className={'text-center'}>
+    <Container className={'text-center'}>
       <h2>Counter</h2>
       <p>This is an example counter component using React, Redux and TypeScript.</p>
       <p>Current Count: <strong>{count}</strong></p>
@@ -21,7 +21,7 @@ const Counter = ({ count, onIncrement, onReset, onDecrement }: CounterProps) =>
         <Button onClick={onReset}>Reset</Button>
         <Button onClick={onDecrement}>Decrement</Button>
       </ButtonGroup>
-    </Grid>
+    </Container>
   </div>;
 
 export default connect(
