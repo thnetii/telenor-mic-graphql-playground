@@ -1,0 +1,6 @@
+export const REQUEST_HOSTNAME_CHANGE = 'REQUEST_HOSTNAME_CHANGE';
+export type REQUEST_HOSTNAME_CHANGE = typeof REQUEST_HOSTNAME_CHANGE;
+
+export type MicHostinfoAnyActionType = (
+  REQUEST_HOSTNAME_CHANGE
+);
