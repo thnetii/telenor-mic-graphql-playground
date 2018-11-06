@@ -4,14 +4,13 @@ import { CounterState } from './Counter';
 import { CounterAnyAction } from '../actions/Counter';
 import { AppNavBarState } from './AppNavBar';
 import { AppNavBarAnyAction } from '../actions/AppNavBar';
-
-export interface AppProps {
-  'route-name': string;
-};
+import { MicHostinfoState } from './MicHostinfo';
+import { MicHostinfoAnyAction } from 'src/actions/MicHostinfo';
 
 export interface GlobalAppState {
   counter: CounterState;
   appNavBar: AppNavBarState;
+  hostinfo: MicHostinfoState;
 }
 
 export interface GlobalState extends GlobalAppState {
@@ -20,7 +19,8 @@ export interface GlobalState extends GlobalAppState {
 
 export type GlobalAppAction = (
   CounterAnyAction |
-  AppNavBarAnyAction
+  AppNavBarAnyAction |
+  MicHostinfoAnyAction
 );
 
 export type GlobalAction = GlobalAppAction | RouterAction;

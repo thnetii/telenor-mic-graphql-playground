@@ -8,11 +8,13 @@ import { GlobalState, GlobalAction, GlobalAppState, GlobalAppAction } from './ty
 
 import { CounterReducer } from './reducers/Counter';
 import { AppNavBarReducer } from './reducers/AppNavBar';
+import { MicHostinfoReducer } from './reducers/MicHostinfo';
 
 export default (history: History, initialState?: GlobalState): Store<GlobalState, GlobalAction> => {
   const reducerMap: ReducersMapObject<GlobalAppState, GlobalAppAction> = {
     counter: CounterReducer,
-    appNavBar: AppNavBarReducer
+    appNavBar: AppNavBarReducer,
+    hostinfo: MicHostinfoReducer,
   };
 
   const middleware: Middleware[] = [];
