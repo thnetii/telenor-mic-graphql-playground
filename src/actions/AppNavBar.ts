@@ -1,11 +1,9 @@
-import { Action, ActionCreator } from 'redux';
+import { ActionCreator } from 'redux';
+import { FluxStandardAction } from '../types/FluxStandardAction';
 import * as Constants from '../constants/AppNavBar';
 import { AppNavBarAnyActionType } from '../constants/AppNavBar';
 
-export interface AppNavBarAction<T extends AppNavBarAnyActionType> extends Action {
-  type: T;
-}
-
+export type AppNavBarAction<T extends AppNavBarAnyActionType> = FluxStandardAction<T>;
 export type AppNavBarToggleAction = AppNavBarAction<Constants.TOGGLE_NAVBAR>;
 
 export type AppNavBarAnyAction = (

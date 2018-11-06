@@ -1,10 +1,8 @@
-import { Action } from 'redux';
+import { FluxStandardAction } from '../types/FluxStandardAction';
 import * as constants from '../constants/Counter';
 import { CounterAnyActionType } from '../constants/Counter';
 
-export interface CounterAction<T extends CounterAnyActionType> extends Action {
-  type: T;
-}
+export type CounterAction<Type extends CounterAnyActionType> = FluxStandardAction<Type>;
 export type IncrementCounterAction = CounterAction<constants.INCREMENT_COUNTER>;
 export type DecrementCounterAction = CounterAction<constants.DECREMENT_COUNTER>;
 export type ResetCounterAction = CounterAction<constants.RESET_COUNTER>;
