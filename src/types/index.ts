@@ -6,11 +6,14 @@ import { AppNavBarState } from './AppNavBar';
 import { AppNavBarAnyAction } from '../actions/AppNavBar';
 import { MicHostinfoState } from './MicHostinfo';
 import { MicHostinfoAnyAction } from 'src/actions/MicHostinfo';
+import { UserLoginState } from './UserLogin';
+import { UserLoginAnyAction } from 'src/actions/UserLogin';
 
 export interface GlobalAppState {
   counter: CounterState;
   appNavBar: AppNavBarState;
   hostinfo: MicHostinfoState;
+  userLogin: UserLoginState;
 }
 
 export interface GlobalState extends GlobalAppState {
@@ -20,7 +23,8 @@ export interface GlobalState extends GlobalAppState {
 export type GlobalAppAction = (
   CounterAnyAction |
   AppNavBarAnyAction |
-  MicHostinfoAnyAction
+  MicHostinfoAnyAction |
+  UserLoginAnyAction
 );
 
 export type GlobalAction = GlobalAppAction | RouterAction;
