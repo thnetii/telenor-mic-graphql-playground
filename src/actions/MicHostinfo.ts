@@ -17,6 +17,7 @@ export interface MicHostinfoManifestUrlPayload {
 }
 
 export interface MicHostinfoManifestPayload<Manifest> {
+  response: Response;
   manifest: Manifest;
 }
 
@@ -73,11 +74,10 @@ const fetchMicManifest = async (hostname: string, dispatch: Dispatch<MicHostinfo
 
   const qHostname = encodeURIComponent(hostname);
   const manifestUrl = `https://1u31fuekv5.execute-api.eu-west-1.amazonaws.com/prod/manifest/?hostname=${qHostname}`;
-  const fetchMicManifestAction: MicHostinfoFetchMicManifestAction = {
+  dispatch({
     type: Constants.FETCH_MIC_MANIFEST,
     meta: { manifestUrl }
-  };
-  dispatch(fetchMicManifestAction);
+  });
 
   try {
     const response = await fetch(manifestUrl);
@@ -85,20 +85,18 @@ const fetchMicManifest = async (hostname: string, dispatch: Dispatch<MicHostinfo
     if (!isHostnameRequested(hostname, getGlobalState)) {
       return undefined;
     }
-    const receiveMicManifestAction: MicHostinfoReceiveMicManifestAction = {
+    dispatch({
       type: Constants.RECEIVE_MIC_MANIFEST,
-      meta: { manifest }
-    };
-    dispatch(receiveMicManifestAction);
+      meta: { response, manifest }
+    });
     return manifest;
   } catch (e) {
-    const hostnameChangeFailedAction: MicHostinfoHostnameChangeFailedAction = {
+    dispatch({
       type: Constants.HOSTNAME_CHANGE_FAILED,
       payload: e as Error,
       meta: { hostname },
       error: true
-    };
-    dispatch(hostnameChangeFailedAction);
+    });
     return undefined;
   }
 };
@@ -109,11 +107,10 @@ const fetchApiManifest = async (hostname: string, apiRootUrl: string, dispatch: 
   }
 
   const manifestUrl = `${apiRootUrl}/metadata/manifest`;
-  const fetchApiManifestAction: MicHostinfoFetchApiManifestAction = {
+  dispatch({
     type: Constants.FETCH_API_MANIFEST,
     meta: { manifestUrl }
-  };
-  dispatch(fetchApiManifestAction);
+  });
 
   try {
     const response = await fetch(manifestUrl);
@@ -121,20 +118,18 @@ const fetchApiManifest = async (hostname: string, apiRootUrl: string, dispatch: 
     if (!isHostnameRequested(hostname, getGlobalState)) {
       return undefined;
     }
-    const receiveMicManifestAction: MicHostinfoReceiveApiManifestAction = {
+    dispatch({
       type: Constants.RECEIVE_API_MANIFEST,
-      meta: { manifest }
-    };
-    dispatch(receiveMicManifestAction);
+      meta: { response, manifest }
+    });
     return manifest;
   } catch (error) {
-    const hostnameChangeFailedAction: MicHostinfoHostnameChangeFailedAction = {
+    dispatch({
       type: Constants.HOSTNAME_CHANGE_FAILED,
       payload: error as Error,
       meta: { hostname },
       error: true
-    };
-    dispatch(hostnameChangeFailedAction);
+    });
     return undefined;
   }
 };
@@ -145,11 +140,10 @@ const hostnameOnBlur = (event: React.FocusEvent<HTMLInputElement>) => {
     if (!isHostnameRequested(hostname, getGlobalState)) {
       return;
     }
-    const onBlurAction: MicHostinfoHostnameOnBlurAction = {
+    dispatch({
       type: Constants.HOSTNAME_ONBLUR_EVENT,
       payload: { hostname }
-    };
-    dispatch(onBlurAction);
+    });
 
     const micManifest = await fetchMicManifest(hostname, dispatch, getGlobalState);
     if (typeof micManifest === 'undefined') {
@@ -162,15 +156,14 @@ const hostnameOnBlur = (event: React.FocusEvent<HTMLInputElement>) => {
       return;
     }
     const apiKey = apiManifest.ApiKey;
-    const hostnameChangeSucceededAction: MicHostinfoHostnameChangeSucceededAction = {
+    dispatch({
       type: Constants.HOSTNAME_CHANGE_SUCCEEDED,
       payload: {
         hostname,
         apiRootUrl,
         apiKey
       }
-    };
-    dispatch(hostnameChangeSucceededAction);
+    });
   };
 };
 
