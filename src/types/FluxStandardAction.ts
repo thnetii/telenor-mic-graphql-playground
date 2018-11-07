@@ -69,14 +69,14 @@ export type DefaultErrorFSA<
   Meta = undefined
   > = DefaultErrorFluxStandardAction<Type, CustomError, Meta>;
 
-interface DefaultErrorFluxStandardActionWithCustomError<Type extends string = string, CustomError extends Error = Error, Meta = undefined> extends DefaultErrorFluxStandardAction<Type, CustomError, Meta> {
+interface DefaultErrorFluxStandardActionWithPayload<Type extends string = string, CustomError extends Error = Error, Meta = undefined> extends DefaultErrorFluxStandardAction<Type, CustomError, Meta> {
   payload: CustomError;
 }
-export type DefaultErrorFSAWithCustomError<
+export type DefaultErrorFSAWithPayload<
   Type extends string = string,
   CustomError extends Error = Error,
   Meta = undefined
-  > = DefaultErrorFluxStandardActionWithCustomError<Type, CustomError, Meta>;
+  > = DefaultErrorFluxStandardActionWithPayload<Type, CustomError, Meta>;
 
 interface DefaultErrorFluxStandardActionWithMeta<Type extends string = string, CustomError extends Error = Error, Meta = undefined> extends DefaultErrorFluxStandardAction<Type, CustomError, Meta> {
   meta: Meta;
@@ -87,16 +87,16 @@ export type DefaultErrorFSAWithMeta<
   Meta = undefined
   > = DefaultErrorFluxStandardActionWithMeta<Type, CustomError, Meta>;
 
-export type DefaultErrorFluxStandardActionWithCustomErrorAndMeta<
+export type DefaultErrorFluxStandardActionWithPayloadAndMeta<
   Type extends string = string,
   CustomError extends Error = Error,
   Meta = undefined
-  > = DefaultErrorFluxStandardActionWithCustomError<Type, CustomError, Meta> & DefaultErrorFluxStandardActionWithMeta<Type, CustomError, Meta>;
-export type DefaultErrorFSAWithCustomErrorAndMeta<
+  > = DefaultErrorFluxStandardActionWithPayload<Type, CustomError, Meta> & DefaultErrorFluxStandardActionWithMeta<Type, CustomError, Meta>;
+export type DefaultErrorFSAWithPayloadAndMeta<
   Type extends string = string,
   CustomError extends Error = Error,
   Meta = undefined
-  > = DefaultErrorFluxStandardActionWithCustomErrorAndMeta<Type, CustomError, Meta>;
+  > = DefaultErrorFluxStandardActionWithPayloadAndMeta<Type, CustomError, Meta>;
 
 export type ErrorFluxStandardAction<
   Type extends string = string,
@@ -110,8 +110,8 @@ export type ErrorFluxStandardAction<
   )
   : (
     Meta extends undefined
-    ? DefaultErrorFluxStandardActionWithCustomError<Type, CustomError, Meta>
-    : DefaultErrorFluxStandardActionWithCustomErrorAndMeta<Type, CustomError, Meta>
+    ? DefaultErrorFluxStandardActionWithPayload<Type, CustomError, Meta>
+    : DefaultErrorFluxStandardActionWithPayloadAndMeta<Type, CustomError, Meta>
   );
 export type ErrorFSA<
   Type extends string = string,
