@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Container, Alert } from 'reactstrap';
-import AppPageHeader from './AppPageHeader';
 
-const Home = () =>
+import PageHeader from '../components/pageheader';
+
+const HomePage = () =>
   <div>
-    <AppPageHeader />
+    <PageHeader />
     <Container className={'text-center'}>
       <Alert color={'danger'} fade={false}>
         <h4>BETA functionality!</h4>
@@ -39,4 +40,4 @@ const Home = () =>
     </Container>
   </div>;
 
-export default Home;
+export default HomePage;
