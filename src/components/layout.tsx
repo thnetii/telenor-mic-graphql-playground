@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Container } from 'reactstrap';
-import AppNavBar from './AppNavBar';
+import Navbar from './navbar';
 
-const Layout = (props: { children: any }) =>
+const Layout = (props: { children?: React.ReactNode }) =>
   <div>
     <Container fluid={true}>
       {props.children}
     </Container>
-    <AppNavBar />
+    <Navbar />
   </div>;
 
 export default Layout;
