@@ -1,0 +1,48 @@
+{
+  "name": "thnetii-telenor-mic-graphql-playground",
+  "version": "2.33.0",
+  "private": true,
+  "author": {
+    "name": "Fredrik Høisæther Rasch",
+    "email": "fredrik.rasch@gmail.com",
+    "url": "https://github.com/couven92"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0-rc.1",
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vuetify": "^1.3.0",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.1.1",
+    "@vue/cli-plugin-eslint": "^3.1.5",
+    "@vue/cli-service": "^3.1.4",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-cli-plugin-vuetify": "^0.4.5",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "bugs": {
+    "url": "https://github.com/thnetii/telenor-mic-graphql-playground/issues",
+    "email": "fredrik.rasch@gmail.com"
+  },
+  "homepage": "https://github.com/thnetii/telenor-mic-graphql-playground/",
+  "keywords": [
+    "telenor",
+    "connexion",
+    "iot",
+    "graphql-playground"
+  ],
+  "license": "MIT",
+  "repository": "github:thnetii/telenor-mic-graphql-playground"
+}
