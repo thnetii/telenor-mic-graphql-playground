@@ -1,7 +1,7 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { FSAAuto } from '../helpers/flux-standard-action';
-import { COUNTER_INCREMENT, COUNTER_DECREMENT, COUNTER_RESET, COUNTER_ADD } from '../constants/counter.constants';
+import { FSAAuto } from "../helpers/flux-standard-action";
+import { COUNTER_INCREMENT, COUNTER_DECREMENT, COUNTER_RESET, COUNTER_ADD } from "../constants/counter.constants";
 
 export type CounterIncrementAction = FSAAuto<number, undefined, COUNTER_INCREMENT>;
 export type CounterDecrementAction = FSAAuto<number, undefined, COUNTER_DECREMENT>;
@@ -21,7 +21,7 @@ const add = (amount: number): CounterAddAction => ({
 });
 
 const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-  const amount = parseInt(event.currentTarget.getAttribute('data-amount') || '0', undefined);
+  const amount = parseInt(event.currentTarget.getAttribute("data-amount") || "0", undefined);
   return add(amount);
 };
 
