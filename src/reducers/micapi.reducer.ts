@@ -24,6 +24,7 @@ const micapiReducer: Reducer<MicApiState, MicApiAnyAction> =
       case MICAPI_API_KEY_FECTH_SUCCESS:
         return {
           ...state,
+          requestedHostname: undefined,
           hostname: action.payload.hostname,
           apiBaseUrl: action.payload.apiBaseUrl,
           apiKey: action.payload.apiKey

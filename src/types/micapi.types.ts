@@ -1,4 +1,4 @@
-import { micapiActions } from "../actions/micapi.actions";
+import { Dispatch } from 'react-redux';
 
 // https://1u31fuekv5.execute-api.eu-west-1.amazonaws.com/prod/manifest/?hostname=startiot.mic.telenorconnexion.com
 const micManifestExample = {
@@ -129,4 +129,6 @@ export interface MicApiState {
 
   requestedHostname?: string;
 }
-export type MicApiProps = MicApiState & typeof micapiActions;
+export interface MicApiProps extends MicApiState {
+  dispatch: Dispatch<any>;
+}
