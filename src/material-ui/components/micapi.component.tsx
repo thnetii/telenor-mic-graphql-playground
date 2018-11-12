@@ -8,16 +8,11 @@ import {
 
 import { MicApiProps } from "../../types/micapi.types";
 
-interface MicManifestComponentState {
-  hostname?: string;
-}
+import { MicManifestFormGroup as BootstrapMicManifestFormGroup } from "../../components/micapi.component";
 
-export class MicManifestFormGroup extends React.Component<MicApiProps, MicManifestComponentState> {
+export class MicManifestFormGroup extends BootstrapMicManifestFormGroup {
   constructor(props: MicApiProps) {
     super(props);
-
-    this.hostnameOnChange = this.hostnameOnChange.bind(this);
-    this.hostnameOnBlur = this.hostnameOnBlur.bind(this);
   }
 
   public render() {
@@ -30,19 +25,5 @@ export class MicManifestFormGroup extends React.Component<MicApiProps, MicManife
         helperText={undefined}
       />
     );
-  }
-
-  private hostnameOnBlur(event: React.FocusEvent<HTMLInputElement>) {
-    const hostname = event.target.value;
-    const { fetchApiKey } = this.props;
-    fetchApiKey(hostname);
-  }
-
-  private hostnameOnChange(event: React.FocusEvent<HTMLInputElement>) {
-    const hostname = event.target.value;
-    const { requestedHostname, abortApiKey } = this.props;
-    if (hostname !== requestedHostname) {
-      abortApiKey(requestedHostname);
-    }
   }
 }
