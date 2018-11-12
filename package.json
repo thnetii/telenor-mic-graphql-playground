@@ -15,6 +15,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0-rc.1",
     "vue": "^2.5.17",
+    "vue-fragment": "^1.2.2",
     "vue-router": "^3.0.1",
     "vuetify": "^1.3.0",
     "vuex": "^3.0.1"
@@ -27,6 +28,8 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue-cli-plugin-vuetify": "^0.4.5",
