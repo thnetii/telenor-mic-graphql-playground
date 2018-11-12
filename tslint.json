@@ -1,10 +1,17 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
   "rules": {
     "ordered-imports": false,
     "interface-name": false,
     "object-literal-sort-keys": false
   },
+  "rulesDirectory": [],
   "linterOptions": {
     "exclude": [
       "config/**/*.js",

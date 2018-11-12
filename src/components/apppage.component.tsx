@@ -1,17 +1,15 @@
-import "../style/layout.css";
-
 import * as React from "react";
 import {
-  Container
-} from "reactstrap";
+  Divider
+} from "@material-ui/core";
 
 import PageHeader from "./pageheader.component";
 
 const AppPage = ({ children }: { children?: React.ReactNode }) =>
-  <Container fluid={true} id="content" className="text-center">
+  <div style={{ textAlign: "center" }}>
     <PageHeader />
-    <hr />
+    <Divider />
     {children}
-  </Container>;
+  </div>;
 
 export default AppPage;

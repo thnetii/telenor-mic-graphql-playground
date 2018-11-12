@@ -1,17 +1,7 @@
 import * as React from "react";
 import { ThunkDispatch } from 'redux-thunk';
 import {
-  FormGroup,
-  FormText,
-  FormFeedback,
-  Input,
-  Button,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-} from "reactstrap";
-import {
-  Language as GlobeIcon,
+  // Language as GlobeIcon,
   // Refresh as RefreshIcon,
 } from "@material-ui/icons";
 
@@ -33,30 +23,7 @@ export class MicManifestFormGroup extends React.Component<MicApiProps, MicManife
 
   public render() {
     return (
-      <FormGroup>
-        <InputGroup>
-          <InputGroupAddon addonType="prepend">
-            <InputGroupText>
-              <GlobeIcon titleAccess="Hostname" />
-            </InputGroupText>
-          </InputGroupAddon>
-          <Input type="text" placeholder="Hostname" required={true}
-            onBlur={this.hostnameOnBlur} onChange={this.hostnameOnChange}
-          />
-          <InputGroupAddon addonType="append">
-            <InputGroupText>
-              <GlobeIcon />
-            </InputGroupText>
-          </InputGroupAddon>
-          <InputGroupAddon addonType="append">
-            <Button color="secondary">
-              Refresh
-            </Button>
-          </InputGroupAddon>
-          <FormFeedback>Form Feedback</FormFeedback>
-        </InputGroup>
-        <FormText>Form Text</FormText>
-      </FormGroup>
+      null
     );
   }
 
