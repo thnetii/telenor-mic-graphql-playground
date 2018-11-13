@@ -1,6 +1,6 @@
-import * as React from "react";
+import * as React from 'react';
 
-import AppNavbar from "./AppNavbar";
+import AppNavbar from './AppNavbar';
 
 const LayoutFragment = (props: { children?: React.ReactNode }) =>
   <React.Fragment>

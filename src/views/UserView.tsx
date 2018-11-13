@@ -1,10 +1,10 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Col,
-} from "reactstrap";
+} from 'reactstrap';
 
-import AppPage from "../components/AppPage";
-import MicApiLoginForm from "../components/MicApiLoginForm";
+import AppPage from '../components/AppPage';
+import MicApiLoginForm from '../components/MicApiLoginForm';
 
 const UserView = () =>
   <AppPage>

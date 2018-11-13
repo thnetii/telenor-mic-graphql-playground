@@ -1,6 +1,6 @@
-import * as React from "react";
-import { connect } from "react-redux";
-import { ThunkDispatch } from "redux-thunk";
+import * as React from 'react';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
 import {
   Form,
   FormGroup,
@@ -9,16 +9,16 @@ import {
   InputGroup,
   InputGroupText,
   InputGroupAddon,
-} from "reactstrap";
-import UserIcon from "@material-ui/icons/AccountCircle";
-import PasswordIcon from "@material-ui/icons/Lock";
+} from 'reactstrap';
+import UserIcon from '@material-ui/icons/AccountCircle';
+import PasswordIcon from '@material-ui/icons/Lock';
 
 import { GlobalState } from '../types';
-import { MicApiProps, MicApiComponentState } from "../types/micapi.types";
+import { MicApiProps, MicApiComponentState } from '../types/micapi.types';
 
 import { micapiActions, MicApiAnyAction } from '../actions/micapi.actions';
 
-import { MicManifestFormGroup } from "./MicManifestFormGroup";
+import { MicManifestFormGroup } from './MicManifestFormGroup';
 
 export class MicApiLoginForm extends React.Component<MicApiProps, MicApiComponentState> {
   constructor(props: MicApiProps) {
@@ -37,33 +37,33 @@ export class MicApiLoginForm extends React.Component<MicApiProps, MicApiComponen
         <MicManifestFormGroup {...this.props} />
         <FormGroup>
           <InputGroup>
-            <InputGroupAddon addonType="prepend">
+            <InputGroupAddon addonType='prepend'>
               <InputGroupText>
-                <UserIcon titleAccess="Username" />
+                <UserIcon titleAccess='Username' />
               </InputGroupText>
             </InputGroupAddon>
-            <Input placeholder="Username" name="username"
-              type="text" required={true}
+            <Input placeholder='Username' name='username'
+              type='text' required={true}
               onBlur={this.usernameOnBlur}
             />
           </InputGroup>
         </FormGroup>
         <FormGroup>
           <InputGroup>
-            <InputGroupAddon addonType="prepend">
+            <InputGroupAddon addonType='prepend'>
               <InputGroupText>
-                <PasswordIcon titleAccess="Password" />
+                <PasswordIcon titleAccess='Password' />
               </InputGroupText>
             </InputGroupAddon>
-            <Input placeholder="Password" name="password"
-              type="password" required={true}
+            <Input placeholder='Password' name='password'
+              type='password' required={true}
               onBlur={this.passwordOnBlur}
             />
           </InputGroup>
         </FormGroup>
         <FormGroup>
           <InputGroup>
-            <Button color="primary" className="mr-auto ml-auto" type="submit">
+            <Button color='primary' className='mr-auto ml-auto' type='submit'>
               Login
             </Button>
           </InputGroup>

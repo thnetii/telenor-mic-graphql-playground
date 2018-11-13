@@ -1,8 +1,8 @@
-import { Reducer } from "redux";
+import { Reducer } from 'redux';
 
-import { CounterState, initialState } from "../types/counter.types";
-import { CounterAnyAction } from "../actions/counter.actions";
-import { COUNTER_RESET, COUNTER_ADD } from "../constants/counter.constants";
+import { CounterState, initialState } from '../types/counter.types';
+import { CounterAnyAction } from '../actions/counter.actions';
+import { COUNTER_RESET, COUNTER_ADD } from '../constants/counter.constants';
 
 const counterReducer: Reducer<CounterState, CounterAnyAction> =
   (state = initialState, action) => {
