@@ -20,7 +20,17 @@ export const micApiService = {
   fetchUserGetAttributes
 };
 
-type MicApiPreFetchCallback = (url: RequestInfo, params: RequestInit) => (void | string | { url: RequestInfo, params: RequestInit });
+export interface MicApiRequestParams {
+  url: RequestInfo,
+  params?: RequestInit
+}
+
+export interface MicApiResponseParams {
+  response: Response,
+  body: any
+}
+
+type MicApiPreFetchCallback = (url: RequestInfo, params?: RequestInit) => (void | string | MicApiRequestParams);
 
 export interface MicApiFetchCallback {
   onPreFetch?: MicApiPreFetchCallback,
@@ -28,7 +38,7 @@ export interface MicApiFetchCallback {
   onFailed?: (error: Error) => void
 }
 
-function fetchPreInvoke(url: RequestInfo, params: RequestInit, callbacks?: MicApiFetchCallback) {
+function fetchPreInvoke(url: RequestInfo, params?: RequestInit, callbacks?: MicApiFetchCallback) {
   const onPreFetch = typeof callbacks !== 'undefined' ? callbacks.onPreFetch : undefined;
   if (typeof onPreFetch === 'undefined') {
     return { url, params };
@@ -44,7 +54,7 @@ function fetchPreInvoke(url: RequestInfo, params: RequestInit, callbacks?: MicAp
   }
 }
 
-async function fetchInvoke<T extends any>(url: RequestInfo, params: RequestInit, callbacks?: MicApiFetchCallback) {
+async function fetchInvoke<T extends any>(url: RequestInfo, params: RequestInit | undefined, callbacks?: MicApiFetchCallback) {
   try {
     const fetchOverride = fetchPreInvoke(url, params, callbacks);
     url = fetchOverride.url;

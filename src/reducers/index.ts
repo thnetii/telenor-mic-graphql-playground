@@ -6,11 +6,13 @@ import { GlobalState } from '../types';
 import { history } from '../helpers/history';
 
 import counterReducer from './counter.reducer';
-import micapiReducer from './micapi.reducer';
+import micstackReducer from './micstack.reducer';
+import { MicApiState } from '../types/micapi.types';
 
 const reducersMap: ReducersMapObject<GlobalState> = {
   counter: counterReducer,
-  micapi: micapiReducer,
+  micapi: (s: MicApiState) => s || {},
+  micstack: micstackReducer,
   router: connectRouter(history)
 };
 

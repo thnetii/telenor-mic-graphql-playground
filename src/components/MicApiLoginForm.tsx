@@ -17,8 +17,6 @@ import { MicApiProps, MicApiComponentState } from '../types/micapi.types';
 
 import { micapiActions } from '../actions/micapi.actions';
 
-import { MicManifestFormGroup } from './MicManifestFormGroup';
-
 export class MicApiLoginForm extends React.Component<MicApiProps, MicApiComponentState> {
   constructor(props: MicApiProps) {
     super(props);
@@ -33,7 +31,6 @@ export class MicApiLoginForm extends React.Component<MicApiProps, MicApiComponen
   public render() {
     return (
       <Form onSubmit={this.onSubmit}>
-        <MicManifestFormGroup {...this.props} />
         <FormGroup>
           <InputGroup>
             <InputGroupAddon addonType='prepend'>
@@ -85,12 +82,9 @@ export class MicApiLoginForm extends React.Component<MicApiProps, MicApiComponen
     event.preventDefault();
     const { apiBaseUrl, apiKey, dispatch } = this.props;
     const { username, password } = this.state;
-    const authLoginAction = micapiActions.fetchAuthLogin(apiBaseUrl as string, apiKey, {
+    micapiActions.fetchAuthLogin(apiBaseUrl as string, apiKey, {
       userName: username as string, password: password as string
-    });
-    if (typeof authLoginAction !== 'undefined') {
-      authLoginAction(dispatch);
-    }
+    }, dispatch);
   }
 }
 

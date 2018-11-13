@@ -4,12 +4,12 @@ import {
 } from 'reactstrap';
 
 import AppPage from '../components/AppPage';
-import MicApiLoginForm from '../components/MicApiLoginForm';
+import MicHostConnectionForm from '../components/MicHostConnectionForm';
 
 const UserView = () =>
   <AppPage>
     <Col sm={{ size: 6, offset: 3 }}>
-      <MicApiLoginForm />
+      <MicHostConnectionForm />
     </Col>
   </AppPage>;
 
