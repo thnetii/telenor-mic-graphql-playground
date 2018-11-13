@@ -2,8 +2,11 @@ import { Dispatch } from 'redux';
 
 import { FluxStandardActionAuto, ErrorFluxStandardActionAuto } from '../helpers/flux-standard-action';
 
-import { GlobalState } from '../types';
-import { MicAuthLoginRequest, MicAuthLoginResponse } from '../types/micapi.types';
+import {
+  MicAuthLoginRequest,
+  MicAuthLoginResponse,
+  MicApiState
+} from '../types/micapi.types';
 
 import { micApiService } from '../services/micapi.service';
 
@@ -105,8 +108,8 @@ export const micapiActions = {
   fetchAuthLogin
 }
 
-function isRequestedHostname(hostname: string, getGlobalState: () => GlobalState) {
-  const { requestedHostname } = getGlobalState().micapi;
+function isRequestedHostname(hostname: string, getState: () => MicApiState) {
+  const { requestedHostname } = getState();
   return hostname === requestedHostname;
 }
 
@@ -153,7 +156,7 @@ function fetchApiKey(hostname: string) {
     return;
   }
 
-  return async (dispatch: Dispatch<MicApiAnyAction>, getGlobalState: () => GlobalState) => {
+  return async (dispatch: Dispatch<MicApiAnyAction>, getState: () => MicApiState) => {
     dispatch({
       type: MICAPI_API_KEY_FECTH_START,
       payload: { hostname }
@@ -161,12 +164,12 @@ function fetchApiKey(hostname: string) {
 
     try {
       const micManifest = await fetchManifest(hostname, dispatch);
-      if (!isRequestedHostname(hostname, getGlobalState)) {
+      if (!isRequestedHostname(hostname, getState)) {
         return;
       }
       const apiBaseUrl = micApiService.getApiGatewayBaseUrl(micManifest);
       const apiManifest = await fetchMetadataManifest(hostname, apiBaseUrl, dispatch);
-      if (!isRequestedHostname(hostname, getGlobalState)) {
+      if (!isRequestedHostname(hostname, getState)) {
         return;
       }
       dispatch({

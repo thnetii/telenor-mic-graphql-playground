@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
 import {
   Form,
   FormGroup,
@@ -16,7 +15,7 @@ import PasswordIcon from '@material-ui/icons/Lock';
 import { GlobalState } from '../types';
 import { MicApiProps, MicApiComponentState } from '../types/micapi.types';
 
-import { micapiActions, MicApiAnyAction } from '../actions/micapi.actions';
+import { micapiActions } from '../actions/micapi.actions';
 
 import { MicManifestFormGroup } from './MicManifestFormGroup';
 
@@ -90,9 +89,7 @@ export class MicApiLoginForm extends React.Component<MicApiProps, MicApiComponen
       userName: username as string, password: password as string
     });
     if (typeof authLoginAction !== 'undefined') {
-      (dispatch as ThunkDispatch<GlobalState, undefined, MicApiAnyAction>)(
-        authLoginAction
-      );
+      authLoginAction(dispatch);
     }
   }
 }
