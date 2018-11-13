@@ -21,7 +21,6 @@
     "graphql-playground"
   ],
   "dependencies": {
-    "@material-ui/core": "^3.4.0",
     "@material-ui/icons": "^3.0.1",
     "bootstrap": "^4.1.3",
     "connected-react-router": "^5.0.1",
@@ -47,6 +46,7 @@
     "lint": "tslint --project tsconfig.json --config tslint.json"
   },
   "devDependencies": {
+    "@material-ui/core": "^3.4.0",
     "@types/bootstrap": "^4.1.2",
     "@types/history": "^4.7.2",
     "@types/jest": "^23.3.9",
