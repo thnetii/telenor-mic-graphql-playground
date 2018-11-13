@@ -1,6 +1,9 @@
 // copied from https://raw.githubusercontent.com/couven92/flux-standard-action/fsa-auto/src/index.d.ts
-import { Action } from "redux";
-import { FluxStandardAction as DefaultFluxStandardAction, ErrorFluxStandardAction as DefaultErrorFluxStandardAction } from "flux-standard-action";
+import { Action } from 'redux';
+import {
+  FluxStandardAction as DefaultFluxStandardAction,
+  ErrorFluxStandardAction as DefaultErrorFluxStandardAction
+} from 'flux-standard-action';
 
 /**
  * A Flux Standard action with optional payload and metadata properties.

@@ -1,11 +1,11 @@
-import { Dispatch } from "redux";
+import { Dispatch } from 'redux';
 
-import { FluxStandardActionAuto, ErrorFluxStandardActionAuto } from "../helpers/flux-standard-action";
+import { FluxStandardActionAuto, ErrorFluxStandardActionAuto } from '../helpers/flux-standard-action';
 
-import { GlobalState } from "../types";
+import { GlobalState } from '../types';
 import { MicAuthLoginRequest, MicAuthLoginResponse } from '../types/micapi.types';
 
-import { micApiService } from "../services/micapi.service";
+import { micApiService } from '../services/micapi.service';
 
 import {
   MICAPI_API_KEY_RESET,
@@ -23,7 +23,7 @@ import {
   MICAPI_AUTH_LOGIN_RESPONSE,
   MICAPI_AUTH_LOGIN_SUCCESS,
   MICAPI_AUTH_LOGIN_FAILURE,
-} from "../constants/micapi.constants";
+} from '../constants/micapi.constants';
 
 interface MicApiHostnameInfo {
   hostname: string;
@@ -149,7 +149,7 @@ async function fetchMetadataManifest(hostname: string, baseUrl: string, dispatch
 }
 
 function fetchApiKey(hostname: string) {
-  if (typeof hostname === "undefined" || !hostname) {
+  if (typeof hostname === 'undefined' || !hostname) {
     return;
   }
 

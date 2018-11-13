@@ -1,4 +1,4 @@
-import { manifestServiceUrl } from "../constants/micapi.constants";
+import { manifestServiceUrl } from '../constants/micapi.constants';
 
 import {
   MicManifest,
@@ -8,7 +8,7 @@ import {
   MicAuthLoginCredentials,
   MicUserFullDetails,
   MicUserDomainDetails
-} from "../types/micapi.types";
+} from '../types/micapi.types';
 
 export const micApiService = {
   fetchManifest,
@@ -29,15 +29,15 @@ export interface MicApiFetchCallback {
 }
 
 function fetchPreInvoke(url: RequestInfo, params: RequestInit, callbacks?: MicApiFetchCallback) {
-  const onPreFetch = typeof callbacks !== "undefined" ? callbacks.onPreFetch : undefined;
-  if (typeof onPreFetch === "undefined") {
+  const onPreFetch = typeof callbacks !== 'undefined' ? callbacks.onPreFetch : undefined;
+  if (typeof onPreFetch === 'undefined') {
     return { url, params };
   }
   const fetchOverride = onPreFetch(url, params);
   switch (typeof fetchOverride) {
-    case "string":
+    case 'string':
       return { url: fetchOverride, params };
-    case "object":
+    case 'object':
       return fetchOverride;
     default:
       return { url, params };
@@ -51,12 +51,12 @@ async function fetchInvoke<T extends any>(url: RequestInfo, params: RequestInit,
     params = fetchOverride.params;
     const response = await fetch(url, params);
     const body = await response.json();
-    if (typeof callbacks !== "undefined" && typeof callbacks.onResponse !== "undefined") {
+    if (typeof callbacks !== 'undefined' && typeof callbacks.onResponse !== 'undefined') {
       callbacks.onResponse(response, body);
     }
     return body as T;
   } catch (error) {
-    if (typeof callbacks !== "undefined" && typeof callbacks.onFailed !== "undefined") {
+    if (typeof callbacks !== 'undefined' && typeof callbacks.onFailed !== 'undefined') {
       callbacks.onFailed(error);
     }
     throw error;
@@ -67,8 +67,8 @@ function fetchManifest(hostname: string, callbacks?: MicApiFetchCallback) {
   const qHostname = encodeURIComponent(hostname);
   const url: RequestInfo = `${manifestServiceUrl}?hostname=${qHostname}`;
   const params: RequestInit = {
-    method: "get",
-    headers: { "Accept": "application/json" }
+    method: 'get',
+    headers: { 'Accept': 'application/json' }
   };
   return fetchInvoke<MicManifest>(url, params, callbacks);
 }
@@ -76,7 +76,7 @@ function fetchManifest(hostname: string, callbacks?: MicApiFetchCallback) {
 function getApiGatewayBaseUrl(manifest: MicManifest) {
   const { ApiGatewayRootUrl, StackName } = manifest;
   let baseUrl = `${ApiGatewayRootUrl}`;
-  if (typeof StackName === "undefined" || !StackName) {
+  if (typeof StackName === 'undefined' || !StackName) {
     return baseUrl;
   }
   baseUrl += `/${StackName}`;
@@ -86,8 +86,8 @@ function getApiGatewayBaseUrl(manifest: MicManifest) {
 function fetchMetadataManifest(baseUrl: string, callbacks?: MicApiFetchCallback) {
   const url: RequestInfo = `${baseUrl}/metadata/manifest`;
   const params: RequestInit = {
-    method: "get",
-    headers: { "Accept": "application/json" }
+    method: 'get',
+    headers: { 'Accept': 'application/json' }
   };
   return fetchInvoke<MicMetadataManifest>(url, params, callbacks);
 }
@@ -95,11 +95,11 @@ function fetchMetadataManifest(baseUrl: string, callbacks?: MicApiFetchCallback)
 function fetchAuthLogin(baseUrl: string, apiKey: string | undefined, request?: MicAuthLoginRequest, callbacks?: MicApiFetchCallback) {
   const url: RequestInfo = `${baseUrl}/auth/login`;
   const params: RequestInit = {
-    method: "post",
+    method: 'post',
     headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json; charset=utf-8",
-      "x-api-key": apiKey || ""
+      'Accept': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
+      'x-api-key': apiKey || ''
     },
     body: JSON.stringify(request)
   };
@@ -109,11 +109,11 @@ function fetchAuthLogin(baseUrl: string, apiKey: string | undefined, request?: M
 function fetchAuthRefresh(baseUrl: string, apiKey: string | undefined, credentials: MicAuthLoginCredentials, callbacks?: MicApiFetchCallback) {
   const url: RequestInfo = `${baseUrl}/auth/refresh`;
   const params: RequestInit = {
-    method: "post",
+    method: 'post',
     headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json; charset=utf-8",
-      "x-api-key": apiKey || ""
+      'Accept': 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
+      'x-api-key': apiKey || ''
     },
     body: JSON.stringify({ refreshToken: credentials.refreshToken })
   };
@@ -128,15 +128,15 @@ function fetchUserGetAttributes<A extends keyof MicUserFullDetails>(
   const urlwithoutAttributes: RequestInfo = `${baseUrl}/users/${userName}`;
   const attributeNames = Object.keys(attributes || {});
   const url = attributeNames.length > 0
-    ? `${urlwithoutAttributes}?attributes=${attributeNames.join(",")}`
+    ? `${urlwithoutAttributes}?attributes=${attributeNames.join(',')}`
     : urlwithoutAttributes;
   const params: RequestInit = {
-    method: "get",
+    method: 'get',
     headers: {
-      "Accept": "application/json",
-      "identityId": credentials.identityId,
-      "Authorization": credentials.token,
-      "x-api-key": apiKey || ""
+      'Accept': 'application/json',
+      'identityId': credentials.identityId,
+      'Authorization': credentials.token,
+      'x-api-key': apiKey || ''
     }
   };
   return fetchInvoke<Pick<MicUserFullDetails, A>>(url, params, callbacks);

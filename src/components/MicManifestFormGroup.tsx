@@ -1,5 +1,5 @@
-import * as React from "react";
-import { connect } from "react-redux";
+import * as React from 'react';
+import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import {
   FormGroup,
@@ -10,18 +10,18 @@ import {
   InputGroupAddon,
   InputGroupText,
   Button,
-} from "reactstrap";
-import GlobeIcon from "@material-ui/icons/Language";
-import ErrorIcon from "@material-ui/icons/ReportProblem";
-import ConnectingIcon from "@material-ui/icons/CompareArrows";
-import DoneIcon from "@material-ui/icons/Done";
+} from 'reactstrap';
+import GlobeIcon from '@material-ui/icons/Language';
+import ErrorIcon from '@material-ui/icons/ReportProblem';
+import ConnectingIcon from '@material-ui/icons/CompareArrows';
+import DoneIcon from '@material-ui/icons/Done';
 
 import { GlobalState } from '../types';
 import {
   MicApiState,
   MicApiProps,
   MicApiComponentState
-} from "../types/micapi.types";
+} from '../types/micapi.types';
 import { micapiActions, MicApiAnyAction } from '../actions/micapi.actions';
 
 export class MicManifestFormGroup extends React.Component<MicApiProps, MicApiComponentState> {
@@ -50,8 +50,8 @@ export class MicManifestFormGroup extends React.Component<MicApiProps, MicApiCom
 
     if (apiKeyError) {
       statusIcon = (
-        <InputGroupAddon addonType="append">
-          <InputGroupText><ErrorIcon color="error" /></InputGroupText>
+        <InputGroupAddon addonType='append'>
+          <InputGroupText><ErrorIcon color='error' /></InputGroupText>
         </InputGroupAddon>
       );
       if (apiKeyStatusText) {
@@ -61,14 +61,14 @@ export class MicManifestFormGroup extends React.Component<MicApiProps, MicApiCom
 
     if (requestedHostname) {
       statusIcon = statusIcon || (
-        <InputGroupAddon addonType="append">
+        <InputGroupAddon addonType='append'>
           <InputGroupText><ConnectingIcon /></InputGroupText>
         </InputGroupAddon>
       );
     } else if (this.state.hostname) {
       refreshButton = (
-        <InputGroupAddon addonType="append">
-          <Button color="secondary" onClick={this.hostnameOnRefresh} tabIndex={-1}>
+        <InputGroupAddon addonType='append'>
+          <Button color='secondary' onClick={this.hostnameOnRefresh} tabIndex={-1}>
             Connect
           </Button>
         </InputGroupAddon>
@@ -77,7 +77,7 @@ export class MicManifestFormGroup extends React.Component<MicApiProps, MicApiCom
 
     if (connectedHostname) {
       statusIcon = statusIcon || (
-        <InputGroupAddon addonType="append">
+        <InputGroupAddon addonType='append'>
           <InputGroupText><DoneIcon /></InputGroupText>
         </InputGroupAddon>
       );
@@ -93,15 +93,15 @@ export class MicManifestFormGroup extends React.Component<MicApiProps, MicApiCom
     return (
       <FormGroup>
         <InputGroup>
-          <InputGroupAddon addonType="prepend">
+          <InputGroupAddon addonType='prepend'>
             <InputGroupText>
-              <GlobeIcon titleAccess="Hostname" />
+              <GlobeIcon titleAccess='Hostname' />
             </InputGroupText>
           </InputGroupAddon>
-          <Input name="hostname" placeholder="Hostname"
+          <Input name='hostname' placeholder='Hostname'
             valid={apiKeyError ? undefined : (connectedHostname ? true : undefined)}
             invalid={apiKeyError ? true : undefined}
-            type="text" required={true} autoFocus={true}
+            type='text' required={true} autoFocus={true}
             onBlur={this.hostnameOnBlur}
             onChange={this.hostnameOnChange}
           />
