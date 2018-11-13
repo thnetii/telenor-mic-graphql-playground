@@ -9,15 +9,15 @@ import {
   InputGroupText,
   InputGroupAddon,
 } from "reactstrap";
-import {
-  AccountCircle as UserIcon,
-  Lock as PasswordIcon
-} from "@material-ui/icons";
+import UserIcon from "@material-ui/icons/AccountCircle";
+import PasswordIcon from "@material-ui/icons/Lock";
 
 import AppPage from "../components/apppage.component";
-import { MicManifestFormGroup } from '../connected/micapi.connected';
+import {
+  ConnectedMicManifestFormGroup as MicManifestFormGroup
+} from '../components/micapi.component';
 
-class LoginPage extends React.Component {
+class LoginView extends React.Component {
   constructor(props: any) {
     super(props);
 
@@ -58,4 +58,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default LoginView;
