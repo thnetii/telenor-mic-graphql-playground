@@ -5,7 +5,7 @@ import {
   Container
 } from "reactstrap";
 
-import PageHeader from "./pageheader.component";
+import PageHeader from "./PageHeader";
 
 const AppPage = ({ children }: { children?: React.ReactNode }) =>
   <Container fluid={true} id="content" className="text-center">

@@ -3,7 +3,7 @@ import {
   Alert
 } from "reactstrap";
 
-import AppPage from "../components/apppage.component";
+import AppPage from "../components/AppPage";
 
 export const HomeView = () =>
   <AppPage>

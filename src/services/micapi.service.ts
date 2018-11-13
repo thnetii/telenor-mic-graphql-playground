@@ -92,28 +92,28 @@ function fetchMetadataManifest(baseUrl: string, callbacks?: MicApiFetchCallback)
   return fetchInvoke<MicMetadataManifest>(url, params, callbacks);
 }
 
-function fetchAuthLogin(baseUrl: string, apiKey: string, request: MicAuthLoginRequest, callbacks?: MicApiFetchCallback) {
+function fetchAuthLogin(baseUrl: string, apiKey: string | undefined, request?: MicAuthLoginRequest, callbacks?: MicApiFetchCallback) {
   const url: RequestInfo = `${baseUrl}/auth/login`;
   const params: RequestInit = {
     method: "post",
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json; charset=utf-8",
-      "x-api-key": apiKey
+      "x-api-key": apiKey || ""
     },
     body: JSON.stringify(request)
   };
   return fetchInvoke<MicAuthLoginResponse>(url, params, callbacks);
 }
 
-function fetchAuthRefresh(baseUrl: string, apiKey: string, credentials: MicAuthLoginCredentials, callbacks?: MicApiFetchCallback) {
+function fetchAuthRefresh(baseUrl: string, apiKey: string | undefined, credentials: MicAuthLoginCredentials, callbacks?: MicApiFetchCallback) {
   const url: RequestInfo = `${baseUrl}/auth/refresh`;
   const params: RequestInit = {
     method: "post",
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json; charset=utf-8",
-      "x-api-key": apiKey
+      "x-api-key": apiKey || ""
     },
     body: JSON.stringify({ refreshToken: credentials.refreshToken })
   };
@@ -121,7 +121,7 @@ function fetchAuthRefresh(baseUrl: string, apiKey: string, credentials: MicAuthL
 }
 
 function fetchUserGetAttributes<A extends keyof MicUserFullDetails>(
-  baseUrl: string, apiKey: string,
+  baseUrl: string, apiKey: string | undefined,
   credentials: MicAuthLoginCredentials, userName: string,
   attributes: { [K in keyof A]: null } | undefined,
   callbacks?: MicApiFetchCallback) {
@@ -132,12 +132,17 @@ function fetchUserGetAttributes<A extends keyof MicUserFullDetails>(
     : urlwithoutAttributes;
   const params: RequestInit = {
     method: "get",
-    headers: { "Accept": "application/json" }
+    headers: {
+      "Accept": "application/json",
+      "identityId": credentials.identityId,
+      "Authorization": credentials.token,
+      "x-api-key": apiKey || ""
+    }
   };
   return fetchInvoke<Pick<MicUserFullDetails, A>>(url, params, callbacks);
 }
 
-function fetchUserGetDefault(baseUrl: string, apiKey: string,
+function fetchUserGetDefault(baseUrl: string, apiKey: string | undefined,
   credentials: MicAuthLoginCredentials, userName: string,
   callbacks?: MicApiFetchCallback) {
   return fetchUserGetAttributes<keyof MicUserDomainDetails>(baseUrl, apiKey, credentials,
