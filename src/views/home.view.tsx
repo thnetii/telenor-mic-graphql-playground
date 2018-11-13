@@ -5,7 +5,7 @@ import {
 
 import AppPage from "../components/apppage.component";
 
-const HomePage = () =>
+export const HomeView = () =>
   <AppPage>
     <Alert color="danger" fade={false}>
       <h4>BETA functionality!</h4>
@@ -39,4 +39,4 @@ const HomePage = () =>
     </Alert>
   </AppPage>;
 
-export default HomePage;
+export default HomeView;

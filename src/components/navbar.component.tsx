@@ -10,11 +10,9 @@ import {
   Navbar as ReactStrapNavbar,
   NavbarToggler,
 } from "reactstrap";
-import {
-  Home as HomeIcon,
-  Games as GamesIcon,
-  AccountBox as UserIcon
-} from "@material-ui/icons";
+import HomeIcon from "@material-ui/icons/Home";
+import GamesIcon from "@material-ui/icons/Games";
+import UserIcon from "@material-ui/icons/AccountBox";
 
 class Navbar extends React.Component<{}, { isOpen: boolean }> {
   constructor(props: {}) {

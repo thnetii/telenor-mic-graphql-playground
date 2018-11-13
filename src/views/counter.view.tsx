@@ -1,18 +1,24 @@
 import * as React from "react";
 import {
+  bindActionCreators,
+  Dispatch,
+} from "redux";
+import { connect } from "react-redux";
+import {
   Button,
   ButtonGroup
 } from "reactstrap";
-import {
-  Add as IncrementIcon,
-  Remove as DecrementIcon
-} from "@material-ui/icons";
+import IncrementIcon from "@material-ui/icons/Add";
+import DecrementIcon from "@material-ui/icons/Remove";
 
-import { CounterProps } from "../types/counter.types";
+import { GlobalState } from "../types";
+import { CounterState, CounterProps } from "../types/counter.types";
+
+import { CounterAnyAction, counterActions } from "../actions/counter.actions";
 
 import AppPage from "../components/apppage.component";
 
-const CounterPage = ({ count, onClick, reset }: CounterProps) =>
+export const CounterView = ({ count, onClick, reset }: CounterProps) =>
   <AppPage>
     <h2>Counter</h2>
     <p>This is an example counter component using React, Redux and TypeScript.</p>
@@ -26,4 +32,9 @@ const CounterPage = ({ count, onClick, reset }: CounterProps) =>
     </ButtonGroup>
   </AppPage>;
 
-export default CounterPage;
+export const ConnectedCounterView = connect(
+  (state: GlobalState): CounterState => state.counter,
+  (dispatch: Dispatch<CounterAnyAction>) => bindActionCreators(counterActions, dispatch)
+)(CounterView);
+
+export default ConnectedCounterView;

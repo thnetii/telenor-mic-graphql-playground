@@ -1,4 +1,5 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import { ThunkDispatch } from 'redux-thunk';
 import {
   FormGroup,
@@ -10,13 +11,10 @@ import {
   InputGroupAddon,
   InputGroupText,
 } from "reactstrap";
-import {
-  Language as GlobeIcon,
-  // Refresh as RefreshIcon,
-} from "@material-ui/icons";
+import GlobeIcon from "@material-ui/icons/Language";
 
 import { GlobalState } from '../types';
-import { MicApiProps } from "../types/micapi.types";
+import { MicApiState, MicApiProps } from "../types/micapi.types";
 import { micapiActions, MicApiAnyAction } from '../actions/micapi.actions';
 
 interface MicManifestComponentState {
@@ -89,3 +87,7 @@ export class MicManifestFormGroup extends React.Component<MicApiProps, MicManife
     this.setState({ hostname });
   }
 }
+
+export const ConnectedMicManifestFormGroup = connect(
+  (state: GlobalState): MicApiState => state.micapi
+)(MicManifestFormGroup);
