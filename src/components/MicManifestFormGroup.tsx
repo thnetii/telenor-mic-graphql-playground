@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
 import {
   FormGroup,
   FormText,
@@ -22,7 +21,7 @@ import {
   MicApiProps,
   MicApiComponentState
 } from '../types/micapi.types';
-import { micapiActions, MicApiAnyAction } from '../actions/micapi.actions';
+import { micapiActions } from '../actions/micapi.actions';
 
 export class MicManifestFormGroup extends React.Component<MicApiProps, MicApiComponentState> {
   constructor(props: MicApiProps) {
@@ -30,6 +29,7 @@ export class MicManifestFormGroup extends React.Component<MicApiProps, MicApiCom
 
     this.state = {};
 
+    this.getProps = this.getProps.bind(this);
     this.hostnameOnRefresh = this.hostnameOnRefresh.bind(this);
     this.hostnameOnChange = this.hostnameOnChange.bind(this);
     this.hostnameOnBlur = this.hostnameOnBlur.bind(this);
@@ -114,14 +114,16 @@ export class MicManifestFormGroup extends React.Component<MicApiProps, MicApiCom
     );
   }
 
+  private getProps() {
+    return this.props;
+  }
+
   private dispatchFetchApiKey(hostname: string) {
     const { dispatch } = this.props;
     const { fetchApiKey } = micapiActions;
     const fecthApiKeyAction = fetchApiKey(hostname);
     if (typeof fecthApiKeyAction !== 'undefined') {
-      (dispatch as ThunkDispatch<GlobalState, undefined, MicApiAnyAction>)(
-        fecthApiKeyAction
-      );
+      fecthApiKeyAction(dispatch, this.getProps);
     }
   }
 

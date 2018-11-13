@@ -1,11 +1,11 @@
 import { Middleware, StoreEnhancer, DeepPartial, createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import { logger } from 'redux-logger';
 import { routerMiddleware } from 'connected-react-router';
 
 import { history } from './history';
+
+import { GlobalState } from '../types';
 import { rootReducer } from '../reducers';
-import { GlobalState } from 'src/types';
 
 // Get the application-wide store instance, prepopulating with state from the server where available.
 const initialState: DeepPartial<GlobalState> | undefined = (window as any).initialReduxState;
@@ -16,7 +16,6 @@ const middlewares = (() => {
   if (typeof logger !== 'undefined') {
     middleware.push(logger);
   }
-  middleware.push(thunk);
   middleware.push(routerMiddleware(history));
 
   return middleware;
