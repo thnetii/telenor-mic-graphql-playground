@@ -126,9 +126,16 @@ export interface MicApiState {
   hostname?: string;
   apiBaseUrl?: string;
   apiKey?: string;
+  apiKeyStatusText?: string;
+  apiKeyError?: boolean;
 
   requestedHostname?: string;
 }
 export interface MicApiProps extends MicApiState {
   dispatch: Dispatch<any>;
+}
+export interface MicApiComponentState {
+  hostname?: string;
+  username?: string;
+  password?: string;
 }

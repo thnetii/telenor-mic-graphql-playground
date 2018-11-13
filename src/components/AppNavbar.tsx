@@ -4,17 +4,17 @@ import {
 } from "react-router-dom";
 import {
   Collapse,
+  Navbar,
+  NavbarToggler,
   Nav,
   NavItem,
   NavLink,
-  Navbar as ReactStrapNavbar,
-  NavbarToggler,
 } from "reactstrap";
 import HomeIcon from "@material-ui/icons/Home";
-import GamesIcon from "@material-ui/icons/Games";
-import UserIcon from "@material-ui/icons/AccountBox";
+import CounterIcon from "@material-ui/icons/School";
+import LoginIcon from "@material-ui/icons/AccountBox";
 
-class Navbar extends React.Component<{}, { isOpen: boolean }> {
+class AppNavbar extends React.Component<{}, { isOpen: boolean }> {
   constructor(props: {}) {
     super(props);
 
@@ -26,24 +26,33 @@ class Navbar extends React.Component<{}, { isOpen: boolean }> {
   public render() {
     const { isOpen } = this.state;
     return (
-      <ReactStrapNavbar color="dark" dark={true} expand="sm" className="fixed-bottom">
+      <Navbar color="dark" dark={true} expand="sm" className="fixed-bottom">
         <NavbarToggler onClick={this.onToggle} />
         <Collapse isOpen={isOpen} navbar={true}>
           <Nav className="mr-auto" navbar={true}>
             <NavItem>
-              <NavLink exact={true} tag={RouterLink} to="/"><HomeIcon /> Home</NavLink>
+              <NavLink exact={true} tag={RouterLink} to="/">
+                <HomeIcon className="mr-1" />
+                Home
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={RouterLink} to="/counter"><GamesIcon /> Counter</NavLink>
+              <NavLink tag={RouterLink} to="/counter">
+                <CounterIcon className="mr-1" />
+                Counter
+              </NavLink>
             </NavItem>
           </Nav>
           <Nav className="ml-auto" navbar={true}>
             <NavItem>
-              <NavLink tag={RouterLink} to="/login"><UserIcon /> Login</NavLink>
+              <NavLink tag={RouterLink} to="/user">
+                Login
+                <LoginIcon className="ml-1" />
+              </NavLink>
             </NavItem>
           </Nav>
         </Collapse>
-      </ReactStrapNavbar>
+      </Navbar>
     );
   }
 
@@ -53,4 +62,4 @@ class Navbar extends React.Component<{}, { isOpen: boolean }> {
   }
 }
 
-export default Navbar;
+export default AppNavbar;
