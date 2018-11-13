@@ -48,12 +48,8 @@ class Navbar extends React.Component<{}, { isOpen: boolean }> {
   }
 
   private onToggle() {
-    const state = this.state;
-    const { isOpen } = state;
-    this.setState({
-      ...state,
-      isOpen: !isOpen
-    });
+    const { isOpen } = this.state;
+    this.setState({ isOpen: !isOpen });
   }
 }
 
