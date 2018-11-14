@@ -54,7 +54,7 @@
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
     "@types/react-redux": "^5.0.21",
-    "@types/react-router": "^4.3.1",
+    "@types/react-router": "^4.4.1",
     "@types/react-router-dom": "^4.3.1",
     "@types/reactstrap": "^6.4.2",
     "@types/redux-logger": "^3.0.6",
