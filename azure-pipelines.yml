@@ -1,0 +1,42 @@
+resources:
+- repo: self
+queue:
+  name: Hosted VS2017
+steps:
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2
+  displayName: 'Use Yarn 1.x'
+  inputs:
+    checkLatest: true
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+  displayName: yarn
+  inputs:
+    ProductionMode: true
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+  displayName: 'yarn run lint'
+  inputs:
+    Arguments: 'run lint'
+    ProductionMode: true
+  continueOnError: true
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+  displayName: 'yarn run test'
+  inputs:
+    Arguments: 'run test'
+    ProductionMode: true
+- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+  displayName: 'yarn run build'
+  inputs:
+    Arguments: 'run build'
+    ProductionMode: true
+- task: CopyFiles@2
+  displayName: 'Copy Build to Artifact Staging Directory'
+  inputs:
+    SourceFolder: build
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+  continueOnError: true
+- task: PublishBuildArtifacts@1
+  displayName: Publish Artifact
+  inputs:
+      PathtoPublish: $(Build.ArtifactStagingDirectory)
+      ArtifactName: telenor-mic-graphql-playground-$(Build.BuildId)-$(Build.BuildNumber)
+  continueOnError: true
