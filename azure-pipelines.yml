@@ -19,11 +19,6 @@ steps:
     ProductionMode: true
   continueOnError: true
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-  displayName: 'yarn run test'
-  inputs:
-    Arguments: 'run test'
-    ProductionMode: true
-- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
   displayName: 'yarn run build'
   inputs:
     Arguments: 'run build'
