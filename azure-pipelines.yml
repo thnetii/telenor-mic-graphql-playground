@@ -9,23 +9,16 @@ steps:
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
   displayName: yarn install
   inputs:
-    ProductionMode: true
+    Arguments: 'install'
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
   displayName: 'yarn run lint'
   inputs:
     Arguments: 'run lint'
-    ProductionMode: true
   continueOnError: true
-- task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-  displayName: 'yarn run test'
-  inputs:
-    Arguments: 'run test'
-    ProductionMode: true
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
   displayName: 'yarn run build'
   inputs:
     Arguments: 'run build'
-    ProductionMode: true
 - task: CopyFiles@2
   displayName: 'Copy Build to Artifact Staging Directory'
   inputs:

@@ -1,30 +1,12 @@
-import { ConnectedRouterProps, RouterState, RouterAction } from 'connected-react-router';
+import { RouterState } from 'connected-react-router';
 
-import { CounterState } from './Counter';
-import { CounterAnyAction } from '../actions/Counter';
-import { AppNavBarState } from './AppNavBar';
-import { AppNavBarAnyAction } from '../actions/AppNavBar';
-import { MicHostinfoState } from './MicHostinfo';
-import { MicHostinfoAnyAction } from 'src/actions/MicHostinfo';
-import { UserLoginState } from './UserLogin';
-import { UserLoginAnyAction } from 'src/actions/UserLogin';
+import { CounterState } from './counter.types';
+import { MicApiState } from './micapi.types';
+import { MicStackState } from './micstack.types';
 
-export interface GlobalAppState {
+export interface GlobalState {
   counter: CounterState;
-  appNavBar: AppNavBarState;
-  hostinfo: MicHostinfoState;
-  userLogin: UserLoginState;
+  micapi: MicApiState,
+  micstack: MicStackState
+  router: RouterState;
 }
-
-export interface GlobalState extends GlobalAppState {
-  router: ConnectedRouterProps & RouterState;
-}
-
-export type GlobalAppAction = (
-  CounterAnyAction |
-  AppNavBarAnyAction |
-  MicHostinfoAnyAction |
-  UserLoginAnyAction
-);
-
-export type GlobalAction = GlobalAppAction | RouterAction;

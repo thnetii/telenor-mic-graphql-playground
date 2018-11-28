@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { Route } from 'react-router-dom';
-import Home from './Home';
-import Layout from './Layout';
-import Counter from './Counter';
-import UserLogin from './UserLogin';
+
+import LayoutFragment from './LayoutFragment';
+
+import HomeView from '../views/HomeView';
+import UserView from '../views/UserView';
+import CounterView from '../views/CounterView';
 
 const App = () =>
-  <Layout>
-    <Route exact={true} path={'/'} component={Home} />
-    <Route exact={true} path={'/login'} component={UserLogin} />
-    <Route exact={true} path={'/counter'} component={Counter} />
-  </Layout>;
+  <LayoutFragment>
+    <Route exact={true} path='/' component={HomeView} />
+    <Route exact={true} path='/user' component={UserView} />
+    <Route exact={true} path='/counter' component={CounterView} />
+  </LayoutFragment>;
 
 export default App;
