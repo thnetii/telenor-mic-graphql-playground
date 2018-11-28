@@ -1,28 +1,24 @@
-name: $(Date:yyyy-MM-dd)-rev-$(Rev:r)
+name: build-$(Build.BuildId)-date-$(Date:yyyy-MM-dd)
 resources:
 - repo: self
-queue:
-  name: Hosted VS2017
 steps:
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@2
   displayName: 'Use Yarn 1.x'
   inputs:
     checkLatest: true
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
-  displayName: yarn
+  displayName: yarn install
   inputs:
-    ProductionMode: true
+    Arguments: 'install'
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
   displayName: 'yarn run lint'
   inputs:
     Arguments: 'run lint'
-    ProductionMode: true
   continueOnError: true
 - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
   displayName: 'yarn run build'
   inputs:
     Arguments: 'run build'
-    ProductionMode: true
 - task: CopyFiles@2
   displayName: 'Copy Build to Artifact Staging Directory'
   inputs:
