@@ -11,7 +11,7 @@ const isDevelopment = process.env.NODE_ENV === 'development';
 // Get the application-wide store instance, prepopulating with state from the server where available.
 const initialState: DeepPartial<GlobalState> | undefined = (window as any).initialReduxState;
 
-const logger = isDevelopment ? require('redux-logger').logger : undefined;
+const logger = /*isDevelopment ? require('redux-logger').logger : */undefined;
 
 const middlewares = (() => {
 
