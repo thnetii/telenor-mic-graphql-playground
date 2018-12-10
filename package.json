@@ -45,7 +45,7 @@
     "lint": "tslint --project tsconfig.json --config tslint.json"
   },
   "devDependencies": {
-    "@material-ui/core": "^3.6.1",
+    "@material-ui/core": "^3.6.2",
     "@types/bootstrap": "^4.1.2",
     "@types/history": "^4.7.2",
     "@types/jest": "^23.3.10",
