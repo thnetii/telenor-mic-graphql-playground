@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@material-ui/core": "^3.6.1",
-    "@types/bootstrap": "^4.1.2",
+    "@types/bootstrap": "^4.1.4",
     "@types/history": "^4.7.2",
     "@types/jest": "^23.3.10",
     "@types/jquery": "1.9.1 - 3",
